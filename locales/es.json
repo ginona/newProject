@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "type_name": "Ingrese un nombre",
+    "type_surname": "Ingrese un apellido",
+    "select_role": "Seleccione un cargo",
+    "select_reseller": "Seleccione un canal",
+    "select_residue_category": "Seleccione una categoría",
+    "select_organization_type": "Seleccione un tipo",
+    "type_comment": "Escribe un comentario",
+    "password_not_match": "Las contraseñas no coinciden",
+    "password_match": "Las contraseña no ha cambiado",
+    "type_user": "Ingrese su usuario",
+    "type_email": "Ingrese su email",
+    "type_dni": "Ingrese su dni",
+    "valid_email": "Debe ser un e-mail válido",
+    "valid_dni": "Debe ser un dni válido",
+    "type_password": "Ingrese su contraseña",
+    "min_chars": "caracteres mínimo",
+    "phone": "Ingrese un número de teléfono",
+    "url": "'Ingrese una URL válida",
+    "address": "Ingrese una dirección válida",
+    "country": "Seleccione al menos un país",
+    "required": "Este dato es requerido",
+    "category": "Ingrese una categoría",
+    "description": "Ingrese una descripción"
+  }
+}

@@ -1,46 +1,54 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <vuetify-logo />
+  <div>
+    <main>
+      <div class="hero-image">
+        <div class="container-image">
+          <h1><span>SAURON</span></h1>
+          <div class="des">
+            <span class="guion">-</span> The
+            <span class="always">all-seeing</span> eye
+            <span class="guion">-</span>
+          </div>
+        </div>
       </div>
-      <v-card v-for="test in tests.slice(0, 5)" :key="test.id" class="custom">
-        <v-card-title class="headline">
-          {{ test.title }}
-        </v-card-title>
-        <v-card-text>
-          <p>
-            {{ test.completed ? 'Completado' : 'Pendiente' }}
-          </p>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+    </main>
+    <v-carousel
+      cycle
+      height="400"
+      hide-delimiter-background
+      show-arrows-on-hover
+    >
+      <v-carousel-item
+        v-for="(item, i) in items"
+        :key="i"
+        :src="item.src"
+        reverse-transition="fade-transition"
+        transition="fade-transition"
+      >
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    VuetifyLogo,
-  },
-  // middleware: ['auth'],
   data() {
     return {
-      greeting: 'Hello World',
+      items: [
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+        },
+      ],
     }
   },
-  computed: {
-    ...mapGetters({
-      tests: 'tests/list',
-    }),
-  },
-  watch: {},
-  mounted() {
-    this.$store.dispatch('tests/list')
-  },
-  methods: {},
 }
 </script>

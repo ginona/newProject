@@ -49,6 +49,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
+    'vue-web-cam/nuxt',
     [
       'nuxt-vuex-localstorage',
       {

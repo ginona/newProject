@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "sauron",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,9 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-vuex-localstorage": "^1.2.7",
-    "vue-i18n": "^8.22.2",
+    "vue-frame": "^1.0.7",
+    "vue-i18n": "^8.22.4",
+    "vue-iframes": "0.0.13",
     "vue-web-cam": "^1.9.0"
   },
   "devDependencies": {
@@ -34,6 +36,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.5.0",
     "prettier": "^2.1.2",
+    "vue-friendly-iframe": "^0.19.0",
     "vue-jest": "^3.0.4"
   }
 }

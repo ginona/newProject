@@ -5,7 +5,7 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: process.env.PROJECT_NAME,
-    title: 'admin',
+    title: 'Sauron',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -30,7 +30,7 @@ export default {
   css: ['~/assets/custom.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '~/plugins/i18n.js' }, { src: '~/plugins/components.js' }],
+  plugins: [{ src: '~/plugins/components.js' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

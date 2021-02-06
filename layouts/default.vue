@@ -26,7 +26,9 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-row justify="center" align="center"
+        ><img src="~/assets/img/sauron-ico.png" width="50px"
+      /></v-row>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -59,20 +61,18 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
-          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
-          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus.
+          El sistema de interpretación de imágenes para la detección de armas
+          SAURON es un sistema basado en una inteligencia artificial que permite
+          la detección de armas en fuego de pequeño calibre (pistolas y
+          revólveres) en imágenes tomadas en tiempo real por cámaras de
+          seguridad. Si se detecta la presencia de algún arma anteriormente
+          mencionada, el sistema emitirá una alarma visual y sonora.
         </v-card-text>
 
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          {{ new Date().getFullYear() }} — <strong>Sauron</strong>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -86,6 +86,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      icons: ['mdi-facebook', 'mdi-twitter', 'mdi-linkedin', 'mdi-instagram'],
       items: [
         {
           icon: 'mdi-home',

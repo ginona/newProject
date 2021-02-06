@@ -23,9 +23,9 @@ export default {
       })
       .then((result) => {
         // eslint-disable-next-line no-console
-        console.log(result.data)
+        console.log(result.data.data)
 
-        this.items = result.data
+        this.items = result.data.data
       })
   },
 }

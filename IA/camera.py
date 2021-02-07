@@ -1,4 +1,4 @@
-from init import app, db, mail
+from init import cors, socketio, app, db, mail
 from flask_mail import Message 
 from database import Registro
 import datetime
@@ -110,7 +110,7 @@ def postprocess(frame, outs):
                     
                     result = getTimeDifference()
                         
-                    if result > (3,0) and confidence > 0.8:
+                    if result > (0,10) and confidence > 0.8:
                         global dateCompare
                         dateCompare = datetime.datetime.now()
                         path = str(hash(dateCompare))
@@ -119,7 +119,10 @@ def postprocess(frame, outs):
                         db.session.commit()
                         print('ARMA DETECTADA CON %r DE PRESICIÓN' % confidence)
                         cv.imwrite('./images/'+path+'.jpg', frame)
-                        msg = Message("Hello",sender="alertsauronalert@gmail.com",recipients=["aosatinsky@gmail.com"])
+                        
+                        socketio.emit('gun-detected','Alert!!')
+                                                
+                        msg = Message("Hello",sender="alertsauronalert@gmail.com",recipients=["emanuelceriana@gmail.com"])
                         f = open("email.html", "r")
                         html = f.read()
                         msg.html = html

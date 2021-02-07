@@ -1,4 +1,4 @@
-from init import app, db
+from init import cors, socketio, app, db
 from flask import render_template, Response, jsonify, send_file
 from flask_cors import CORS, cross_origin
 from database import Registro
@@ -43,3 +43,4 @@ def images(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
+    socketio.run(app)

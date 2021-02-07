@@ -122,7 +122,7 @@ def postprocess(frame, outs):
                         
                         socketio.emit('gun-detected','Alert!!')
                                                 
-                        msg = Message("Hello",sender="alertsauronalert@gmail.com",recipients=["emanuelceriana@gmail.com"])
+                        msg = Message("Hello",sender="alerts@sauron.ar",recipients=["emanuelceriana@gmail.com"])
                         f = open("email.html", "r")
                         html = f.read()
                         msg.html = html

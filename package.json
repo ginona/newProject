@@ -21,7 +21,9 @@
     "vue-frame": "^1.0.7",
     "vue-i18n": "^8.22.4",
     "vue-iframes": "0.0.13",
-    "vue-web-cam": "^1.9.0"
+    "vue-web-cam": "^1.9.0",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

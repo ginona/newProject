@@ -50,6 +50,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     'vue-web-cam/nuxt',
+    '~/io',
     [
       'nuxt-vuex-localstorage',
       {
@@ -69,6 +70,10 @@ export default {
         Accept: 'application/json',
       },
     },
+  },
+
+  env: {
+    WS_URL: process.env.WS_URL || 'http://localhost:5000',
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)

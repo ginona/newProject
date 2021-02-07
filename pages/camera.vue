@@ -8,7 +8,7 @@
     <br />
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
-        <div id="app">
+        <div id="#app">
           <vue-frame
             text=""
             url="http://localhost:5000/video_feed"
@@ -26,7 +26,7 @@
     <br />
     <br />
     <v-row justify="center" align="center">
-      <v-btn color="black" dark @click="playSound()">
+      <v-btn color="black" dark disabled>
         <img src="~/assets/img/sauron-gif.gif" width="50px"
       /></v-btn>
     </v-row>
@@ -57,7 +57,7 @@
 
 <script>
 import VueFrame from 'vue-frame'
-const { Howl } = require('howler')
+import socket from '~/plugins/socket.io.js'
 // import { WebCam } from 'vue-web-cam'
 
 export default {
@@ -70,29 +70,38 @@ export default {
     return {
       myIframe: null,
       dialog: false,
-      audio: false,
-      sound: null,
+      audio: null,
     }
+  },
+  watch: {
+    dialog(val) {
+      if (val) {
+        this.audio.play()
+      } else {
+        this.audio.pause()
+      }
+    },
+  },
+  created() {
+    const self = this
+    self.audio = new Audio('/alarm.mp3')
+    socket.on('connect', function () {
+      socket.emit('first-connect', 'A user has connected')
+      // eslint-disable-next-line no-console
+      console.log('Connected with socket')
+    })
+
+    socket.on('gun-detected', function (data) {
+      // eslint-disable-next-line no-console
+      self.playSound()
+    })
   },
   methods: {
     playSound() {
       this.dialog = true
-      this.sound = new Howl({
-        src: '/alarm.mp3',
-        autoplay: true,
-        duration: 10,
-        loop: true,
-        volume: 1,
-      })
-      // eslint-disable-next-line no-console
-      // eslint-disable-next-line no-console
-      this.sound.play()
     },
     closeDialog() {
       this.dialog = false
-      this.sound.stop()
-      this.sound.unload()
-      this.sound = null
     },
   },
 }

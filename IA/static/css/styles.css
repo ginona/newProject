@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header ul li a {
+  color: #ffffff;
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+}
+
+.header ul li a:hover {
+  color: #FF6347;
+}
+
+.header ul li a:active {
+  color: rgba(6, 10, 36, 0.56);
+}
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  -webkit-transition: max-height .2s ease-out;
+  transition: max-height .2s ease-out;
+}
+
+.header .menu-icon {
+  padding: 28px 20px;
+  position: relative;
+  float: right;
+  cursor: pointer;
+}
+
+.header .menu-icon .nav-icon {
+  background-color: #ffffff;
+  display: block;
+  height: 2px;
+  width: 18px;
+  position: relative;
+  -webkit-transition: background .2s ease-out;
+  transition: background .2s ease-out;
+}
+
+.header .menu-icon .nav-icon::before {
+  background: #ffffff;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  top: 5px;
+}
+
+.header .menu-icon .nav-icon::after {
+  background: #ffffff;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  top: -5px;
+}
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 224px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  top: 0;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 0;
+}
+
+.hero-image {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("../img/sauron-eye.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/sauron-eye.png");
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container-image {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.container-image h1 {
+  font-size: 72px;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.container-image h1 span {
+  border: 10px solid white;
+  padding: 6px 14px;
+  display: inline-block;
+}
+
+.des {
+  margin: 20px;
+  display: block;
+  font-size: 26px;
+  text-shadow: 0 0 10px black;
+}
+
+.des .always {
+  color: #FF6347;
+}
+
+.des .guion {
+  display: none;
+}
+
+@media (min-width: 1220px) {
+  .header {
+    padding-left: 5%;
+  }
+  .header ul {
+    padding-right: 5%;
+  }
+  .header ul li {
+    float: left;
+  }
+  .header ul li a {
+    padding: 20px 30px;
+    color: #ffffff;
+    font-weight: 400;
+  }
+  .header ul li a:hover {
+    color: #FF6347;
+  }
+  .header ul li a:active {
+    color: rgba(6, 10, 36, 0.56);
+  }
+  .header .menu {
+    background-color: rgba(0, 0, 0, 0);
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+  .des .guion {
+    all: unset;
+  }
+}
+/*# sourceMappingURL=style.css.map */

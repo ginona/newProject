@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO,emit
 from flask_mail import Mail 
 from flask import Flask
+import os
 
 db = SQLAlchemy()
 

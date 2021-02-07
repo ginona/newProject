@@ -119,7 +119,7 @@ def postprocess(frame, outs):
                         db.session.commit()
                         print('ARMA DETECTADA CON %r DE PRESICIÓN' % confidence)
                         cv.imwrite('./images/'+path+'.jpg', frame)
-                        msg = Message("Hello",sender="alertsauronalert@gmail.com",recipients=["aosatinsky@gmail.com"])
+                        msg = Message("Hello",sender="alerts@sauron.ar",recipients=["aosatinsky@gmail.com"])
                         f = open("email.html", "r")
                         html = f.read()
                         msg.html = html

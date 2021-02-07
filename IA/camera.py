@@ -1,4 +1,5 @@
-from init import app, db
+from init import app, db, mail
+from flask_mail import Message 
 from database import Registro
 import datetime
 from datetime import timedelta
@@ -7,6 +8,7 @@ import argparse
 import sys
 import numpy as np
 import os.path
+import threading
 
 # Initialize the parameters
 confThreshold = 0.45  #Confidence threshold
@@ -40,6 +42,10 @@ modelWeights = "yolov4-tiny_best.weights";
 net = cv.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
 net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
 net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
+
+def send_async_email(app, msg):
+    with app.app_context():
+        mail.send(msg)
 
 # Get the names of the output layers
 def getOutputsNames(net):
@@ -113,6 +119,14 @@ def postprocess(frame, outs):
                         db.session.commit()
                         print('ARMA DETECTADA CON %r DE PRESICIÓN' % confidence)
                         cv.imwrite('./images/'+path+'.jpg', frame)
+                        msg = Message("Hello",sender="alertsauronalert@gmail.com",recipients=["aosatinsky@gmail.com"])
+                        f = open("email.html", "r")
+                        html = f.read()
+                        msg.html = html
+                        msg.attach(path+'.jpg','image/jpg',open('./images/'+path+'.jpg', 'rb').read(), 'inline', headers=[['Content-ID','<image>'],])
+                        sender = threading.Thread(name='mail_sender', target=send_async_email, args=(app,msg))
+                        sender.start()
+
                         
             if confidence > confThreshold:
                 center_x = int(detection[0] * frameWidth)

@@ -4,11 +4,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap');
 
+.v-btn.btn-new {
+    height: 48px !important;
+    float: right;
+    background-color: grey !important;
+    color: white !important;
+}
 
+footer {
+    padding-left: 20px;
+}
 
 .border-alert{
     border: 5px solid !important;
     border-color: red !important;
+}
+
+th:last-child
+{
+    padding: 0 !important;
 }
 
 *{

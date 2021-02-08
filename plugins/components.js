@@ -10,23 +10,12 @@ Vue.mixin({
   data() {
     return {
       rulesGlobal: {
-        user: [
-          (v) => !!v || this.$t('rules.type_user'),
-          (v) => !!v || this.$t('rules.type_email'),
-          (v) => /.+@.+\..+/.test(v) || this.$t('rules.valid_email'),
-        ],
-        password: [
-          (v) => !!v || this.$t('rules.type_password'),
-          (v) => v.length >= 5 || '5 ' + this.$t('rules.min_chars'),
-        ],
-        passwordConfirm: [
-          (v) => !!v || this.$t('rules.type_password'),
-          (v) =>
-            v === this.form.password || this.$t('rules.password_not_match'),
-        ],
+        name: [
+          v => !!v || 'Name & Surname',
+        ],  
         email: [
-          (v) => !!v || this.$t('rules.type_email'),
-          (v) => /.+@.+\..+/.test(v) || this.$t('rules.valid_email'),
+          (v) => !!v || 'Email',
+          (v) => /.+@.+\..+/.test(v) || 'Invalid email',
         ],
       },
       // Vuetify datatable variables

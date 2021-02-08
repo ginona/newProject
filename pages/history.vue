@@ -1,5 +1,8 @@
 <template>
   <div>
+    <v-row>
+      <h3 class="my-10 ml-4 text-uppercase">History</h3>
+    </v-row>
     <v-data-table :items-per-page="20" :headers="headers" :items="items">
       <template v-slot:item.actions="{ item }">
         <v-icon v-cloak @click="openDialog(item.path)">mdi-eye</v-icon>
@@ -29,10 +32,10 @@ export default {
       dialog: false,
       src: '',
       headers: [
-        { text: 'ID Cámara', value: 'camera_id' },
-        { text: 'Precisión', value: 'accuracy' },
-        { text: 'Fecha', value: 'date' },
-        { text: 'Ver', value: 'actions' },
+        { text: 'Camera Id', value: 'camera_id' },
+        { text: 'Accuracy', value: 'accuracy' },
+        { text: 'Date', value: 'date' },
+        { text: 'Watch', value: 'actions' },
       ],
       items: [],
     }

@@ -18,12 +18,13 @@
     "howler": "^2.2.1",
     "nuxt": "^2.14.6",
     "nuxt-vuex-localstorage": "^1.2.7",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3",
     "vue-frame": "^1.0.7",
     "vue-i18n": "^8.22.4",
     "vue-iframes": "0.0.13",
     "vue-web-cam": "^1.9.0",
-    "socket.io": "^2.0.3",
-    "socket.io-client": "^2.0.3"
+    "vuelidate": "^0.7.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

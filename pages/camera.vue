@@ -33,21 +33,21 @@
     <v-dialog v-model="dialog" persistent max-width="600px" clas="border-alert">
       <v-card>
         <v-card-title class="justify-center text-center">
-          <h1>!ALERTA!</h1>
+          <h1>!WARNING!</h1>
         </v-card-title>
         <v-card-text class="justify-center text-center">
           <br />
-          <h3>ARMA DETECTADA</h3>
+          <h3>GUN DETECTED</h3>
           <br />
-          <h3>CÁMARA 001</h3>
+          <h3>CAMERA 001</h3>
           <br />
-          <h3>AVISANDO A LAS AUTORIDADES</h3>
+          <h3>NOTIFYING THE AUTHORITIES</h3>
           <br />
           <img src="~/assets/img/sauron-gif.gif" width="200px" />
         </v-card-text>
         <v-card-actions class="justify-center">
           <v-btn color="red darken-1" text @click="closeDialog()">
-            Cerrar
+            Close
           </v-btn>
         </v-card-actions>
       </v-card>

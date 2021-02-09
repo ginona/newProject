@@ -1,6 +1,6 @@
 from init import cors, socketio, app, db, mail
 from flask_mail import Message 
-from database import Registro
+from database import Registro, Contacto
 import datetime
 from datetime import timedelta
 import cv2 as cv
@@ -121,11 +121,16 @@ def postprocess(frame, outs):
                         cv.imwrite('./images/'+path+'.jpg', frame)
                         
                         socketio.emit('gun-detected','Alert!!')
-                                                
-                        msg = Message("Hello",sender="alerts@sauron.ar",recipients=["emanuelceriana@gmail.com"])
-                        f = open("email.html", "r")
-                        html = f.read()
-                        msg.html = html
+                        
+                        contactsArray = []
+                        contactsArray.append("flasher@live.com.ar")
+                        contactos = db.session.query(Contacto).all()
+                        for contacto in contactos:
+                            contactsArray.append(contacto.__dict__["email"])
+                        
+                        msg = Message("Alert!",sender=("Sauron Alerts","alerts@sauron.ar"),recipients=contactsArray)
+                        html = open("email.html", "r")
+                        msg.html = html.read()
                         msg.attach(path+'.jpg','image/jpg',open('./images/'+path+'.jpg', 'rb').read(), 'inline', headers=[['Content-ID','<image>'],])
                         sender = threading.Thread(name='mail_sender', target=send_async_email, args=(app,msg))
                         sender.start()

@@ -27,10 +27,19 @@ class Registro(db.Model):
     def __repr__(self):
         return json.dumps('{ "camera_id": %r, "acurracy": %r, "date": %r, "path": %r }' % (self.camera_id, self.accuracy,self.date,self.path),default=jsonDefault, indent=4)
 
-class contacto(db.Model):
+class Contacto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=False, nullable=False)
 
+    @property
+    def serialize(self):
+       """Return object data in easily serializable format"""
+       return {
+           'id'         : self.id,
+           'nombre': self.nombre,
+           'email': self.email
+       }
+
     def __repr__(self):
-        return '<User %r>' % self.nombre
+        return '<Contacto %r>' % self.nombre

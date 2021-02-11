@@ -59,17 +59,20 @@ export default {
         localStorage: ['users', 'roles'],
       },
     ],
-    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: process.env.BASE_URL,
+    proxy: true,
     headers: {
       common: {
         Accept: 'application/json',
       },
     },
+  },
+
+  proxy: {
+    '/api/': { target: 'http://localhost:5000/', pathRewrite: {'^/api/': ''} }
   },
 
   env: {

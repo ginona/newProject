@@ -42,16 +42,13 @@ export default {
   },
   mounted() {
     this.$axios
-      .get('historial', {
+      .$get('/api/historial', {
         headers: {
           'Content-Type': 'application/json',
         },
       })
       .then((result) => {
-        // eslint-disable-next-line no-console
-        console.log(result.data.data)
-
-        this.items = result.data.data
+        this.items = result.data
       })
   },
   methods: {

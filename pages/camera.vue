@@ -8,7 +8,7 @@
     <br />
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
-        <div id="#app">
+        <div id="app">
           <vue-frame
             text=""
             url="http://localhost:5000/video_feed"
@@ -58,14 +58,11 @@
 <script>
 import VueFrame from 'vue-frame'
 import socket from '~/plugins/socket.io.js'
-// import { WebCam } from 'vue-web-cam'
 
 export default {
   components: {
-    VueFrame,
-    // 'vue-web-cam': WebCam,
+    VueFrame
   },
-  // middleware: ['auth'],
   data() {
     return {
       myIframe: null,
@@ -87,12 +84,10 @@ export default {
     self.audio = new Audio('/alarm.mp3')
     socket.on('connect', function () {
       socket.emit('first-connect', 'A user has connected')
-      // eslint-disable-next-line no-console
       console.log('Connected with socket')
     })
 
     socket.on('gun-detected', function (data) {
-      // eslint-disable-next-line no-console
       self.playSound()
     })
   },

@@ -33,8 +33,10 @@ def gen(camera):
 
 @app.route("/contactos", methods=["GET", "POST"])
 def contacts():
-    if request.form and request.method == "POST":
-        contacto = Contacto(nombre=request.form.get("nombre"), email=request.form.get("email"))
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        contacto = Contacto(nombre=data['nombre'], email=data['email'])
         db.session.add(contacto)
         db.session.commit()
         return jsonify(contacto.serialize)
@@ -44,10 +46,11 @@ def contacts():
 
 @app.route("/contactos/<id>", methods=["POST", "DELETE", "GET"])
 def updateContact(id):
-    if request.form and request.method == "POST":
+    if request.method == "POST":
+        data = request.get_json()
         contacto = Contacto.query.get(id)
-        contacto.nombre = request.form.get("nombre")
-        contacto.email = request.form.get("email")
+        contacto.nombre = data["nombre"]
+        contacto.email = data["email"]
         db.session.commit()
         return jsonify(contacto.serialize)
     if request.method == "DELETE":

@@ -107,7 +107,7 @@ export default {
       actionTitle: 'Create contact',
       contactSelected: null,
       headers: [
-        { text: 'Name', value: 'name' },
+        { text: 'Name', value: 'nombre' },
         { text: 'Email', value: 'email' },
         { text: 'Actions', value: 'actions' },
       ],
@@ -126,23 +126,13 @@ export default {
     }
   },
   mounted() {
-    // this.$axios
-    //   .get('historial', {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   })
-    //   .then((result) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(result.data.data)
-    //     this.items = result.data.data
-    //   })
+    this.$axios
+      .$get("/api/contactos")
+      .then((result) => {
+        this.items = result.data
+      })
   },
   methods: {
-    // openDialog(path) {
-    //   this.dialog = true
-    //   this.src = 'http://localhost:5000/images/' + path
-    // },
     createContact(){
         this.name = null
         this.email = null
@@ -152,11 +142,12 @@ export default {
         this.dialogNewContact = true
     },
     editContact(item) {
-        this.name = item.name
+        this.name = item.nombre
         this.email = item.email
         this.actionButton = 'Save'
         this.actionTitle = 'Edit contact'
         this.action = 'edit'
+        this.contactSelected = item.id
         this.dialogNewContact = true
     },
     deleteContact(item) {
@@ -166,18 +157,53 @@ export default {
     onSubmit(action){
 
         if(action == 'create'){
-            console.log('created')
-        } else {
-            console.log('saved')
-        }
 
+        this.$axios
+          .$post('/api/contactos', {nombre: this.name, email: this.email},{
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(result => {
+            this.$axios
+              .$get("/api/contactos")
+              .then((result) => {
+                this.items = result.data
+              })
+          })
+        } else {
+
+          this.$axios
+            .$post(`/api/contactos/${this.contactSelected}`, {nombre: this.name, email: this.email},{
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(result => {
+              this.$axios
+                .$get("/api/contactos")
+                .then((result) => {
+                  this.items = result.data
+                })
+            })
+            
+        }
         this.name = null
         this.email = null
         this.dialogNewContact = false;
     },
     onDelete() {
-        console.log(this.contactSelected)
-        console.log('deleted')
+
+      this.$axios
+        .$delete(`/api/contactos/${this.contactSelected}`)
+        .then(result => {
+          this.$axios
+            .$get("/api/contactos")
+            .then((result) => {
+              this.items = result.data
+            })
+        })
+
         this.contactSelected = null
         this.dialogDeleteContact = false
     }
